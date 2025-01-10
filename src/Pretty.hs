@@ -13,11 +13,11 @@ module Pretty (prettyPrintProject) where
     -- | Pretty print a Milestone
     prettyPrintMilestone :: Milestone -> String
     prettyPrintMilestone m =
-        "<h2>" ++ show (getMilestoneName m) ++ "</h2>\n"
+        "<h2>" ++ getMilestoneName m ++ "</h2>\n"
         ++ concatMap prettyPrintTask (getTasks m)
 
     -- | Pretty print a project
     prettyPrintProject :: Project -> String
     prettyPrintProject p =
-        "<h1>" ++ show (getProjectName p) ++ "</h1>\n"
+        "<h1><center>" ++ getProjectName p ++ "</h1>\n"
         ++ concatMap prettyPrintMilestone (getMilestones p)

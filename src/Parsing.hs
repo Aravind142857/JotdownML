@@ -48,9 +48,12 @@ module Parsing (parseProject) where
         _ <- some (char ' ' <|> char '-')
         assignedTo' <- manyTill anySingle (try newline)
         _ <- some (char ' ' <|> char '-')
+        _ <- string (pack "Deadline")
+        _ <- some (char ' ' <|> char ':')
         deadline' <- manyTill anySingle (try newline)
         _ <- some (char ' ' <|> char '-')
-        _ <- string (pack "Progress:")
+        _ <- string (pack "Progress")
+        _ <- some (char ' ' <|> char ':')
         progress' <- manyTill anySingle (try newline)
         _ <- optionalNewLineP
         return $ Task (TaskName title') (stringToStatus status') (AssignedTo assignedTo' 0) (Progress (percentageToFloat progress')) (Deadline deadline')--"<h3>" ++ title ++ "</h3>" ++ "\n" ++ "<p>" ++ status ++ " " ++ assignedto ++ " " ++ deadline ++ " " ++ progress ++ "</p>" ++ "\n"
