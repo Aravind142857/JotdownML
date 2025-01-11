@@ -1,6 +1,6 @@
 module Main (main) where
 import Parsing (parseProject)
-import Pretty (prettyPrintProject)
+import Pretty (prettyPrintProject, indentDocument)
 
 main :: IO ()
 main = do
@@ -13,6 +13,7 @@ main = do
       putStrLn "Pretty-printed project:\n"
       let output = prettyPrintProject project
       putStrLn output
+      -- let formattedOutput = indentDocument output
       -- Write to index.html
       writeFile "index.html" output
 
